@@ -1,5 +1,3 @@
-List item
-
 ### Create a Deployment
 A Kubernetes Pod is a group of one or more Containers, tied together for the purposes of administration and networking.
 1. Use the `kubectl create` command to create a Deployment that manages a Pod. The Pod runs a Container based on the provided Docker image.
@@ -22,3 +20,9 @@ kubectl get events
 ```shell
 kubectl config view
 ```
+
+### Create a Service
+By default, the Pod is only accessible by its internal IP address within the Kubernetes cluster. To make the `hello-node` Container accessible from outside the Kubernetes virtual network, you have to expose the Pod as a Kubernetes Service.
+1. Expose the Pod to the public internet using the `kubectl` expose command:
+  `kubectl expose deployment hello-node --type=LoadBalancer --port=8080`
+  The --type=LoadBalancer flag indicates that you want to expose your Service outside of the cluster.
